@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart';
 
 main() => runApp(new AskApp());
 
@@ -27,12 +28,9 @@ class _AskAppState extends State<AskApp> {
         ),
         body: Column(children: [
           Question(asks.elementAt(_selectedAsk)),
-          ElevatedButton(
-            child: Text('Choice 1'),
-            onPressed: _answer,
-          ),
-          ElevatedButton(child: Text('Choice 2'), onPressed: _answer),
-          ElevatedButton(child: Text('Choice 3'), onPressed: _answer),
+          Answer('Choice 1', _answer),
+          Answer('Choice 2', _answer),
+          Answer('Choice 3', _answer),
         ]),
       ),
     );
