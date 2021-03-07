@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './question.dart';
 
 main() => runApp(new AskApp());
 
@@ -14,7 +15,7 @@ class _AskAppState extends State<AskApp> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> _asks = [
+    final List<String> asks = [
       'What is your favorite color?',
       'What is your favorite pet?'
     ];
@@ -25,7 +26,7 @@ class _AskAppState extends State<AskApp> {
           title: Text('Asking'),
         ),
         body: Column(children: [
-          Text(_asks.elementAt(_selectedAsk)),
+          Question(asks.elementAt(_selectedAsk)),
           ElevatedButton(
             child: Text('Choice 1'),
             onPressed: _answer,
