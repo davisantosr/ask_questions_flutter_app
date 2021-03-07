@@ -4,6 +4,10 @@ main() => runApp(new AskApp());
 
 @override
 class AskApp extends StatelessWidget {
+  void answer() {
+    print('Answered');
+  }
+
   Widget build(BuildContext context) {
     final List<String> asks = [
       'What is your favorite color?',
@@ -19,15 +23,19 @@ class AskApp extends StatelessWidget {
           Text(asks.elementAt(0)),
           ElevatedButton(
             child: Text('Choice 1'),
-            onPressed: null,
+            onPressed: answer,
           ),
           ElevatedButton(
-            child: Text('Choice 2'),
-            onPressed: null,
+            child: Column(
+              children: [Text('Test 1'), Text('Test2')],
+            ),
+            onPressed: () {
+              print('Answer 2');
+            },
           ),
           ElevatedButton(
             child: Text('Choice 3'),
-            onPressed: null,
+            onPressed: () => print('Answer 3'),
           ),
         ]),
       ),
