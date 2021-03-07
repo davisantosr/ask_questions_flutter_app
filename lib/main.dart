@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 main() => runApp(new AskApp());
 
-class AskAppState extends State<AskApp> {
-  var selectedAsk = 0;
+class _AskAppState extends State<AskApp> {
+  var _selectedAsk = 0;
 
-  void answer() {
+  void _answer() {
     setState(() {
-      selectedAsk++;
+      _selectedAsk++;
     });
     print('Answered');
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<String> asks = [
+    final List<String> _asks = [
       'What is your favorite color?',
       'What is your favorite pet?'
     ];
@@ -25,13 +25,13 @@ class AskAppState extends State<AskApp> {
           title: Text('Asking'),
         ),
         body: Column(children: [
-          Text(asks.elementAt(selectedAsk)),
+          Text(_asks.elementAt(_selectedAsk)),
           ElevatedButton(
             child: Text('Choice 1'),
-            onPressed: answer,
+            onPressed: _answer,
           ),
-          ElevatedButton(child: Text('Choice 2'), onPressed: answer),
-          ElevatedButton(child: Text('Choice 3'), onPressed: answer),
+          ElevatedButton(child: Text('Choice 2'), onPressed: _answer),
+          ElevatedButton(child: Text('Choice 3'), onPressed: _answer),
         ]),
       ),
     );
@@ -39,7 +39,7 @@ class AskAppState extends State<AskApp> {
 }
 
 class AskApp extends StatefulWidget {
-  AskAppState createState() {
-    return AskAppState();
+  _AskAppState createState() {
+    return _AskAppState();
   }
 }
