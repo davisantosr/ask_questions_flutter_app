@@ -16,10 +16,25 @@ class _AskAppState extends State<AskApp> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> asks = [
-      'What is your favorite color?',
-      'What is your favorite pet?'
+    final List<Map<String, Object>> asks = [
+      {
+        'text': 'What is your favorite color?',
+        'answers': ['black', 'red', 'blue', 'white'],
+      },
+      {
+        'text': 'What is your favorite pet?',
+        'answers': ['Elephant', 'Aligator', 'Giraffe', 'Rhino'],
+      },
+      {
+        'text': 'What is your favorite Super Hero?',
+        'answers': ['Batman', 'Flash', 'Iron Man', 'Spiderman'],
+      },
     ];
+
+    List<Widget> answersArr = [];
+    for (var textAnswer in asks[_selectedAsk]['answers']) {
+      answersArr.add(Answer(textAnswer, _answer));
+    }
 
     return new MaterialApp(
       home: Scaffold(
@@ -27,10 +42,8 @@ class _AskAppState extends State<AskApp> {
           title: Text('Asking'),
         ),
         body: Column(children: [
-          Question(asks.elementAt(_selectedAsk)),
-          Answer('Choice 1', _answer),
-          Answer('Choice 2', _answer),
-          Answer('Choice 3', _answer),
+          Question(asks.elementAt(_selectedAsk)['text']),
+          ...answersArr,
         ]),
       ),
     );
