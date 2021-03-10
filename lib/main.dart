@@ -30,11 +30,12 @@ class _AskAppState extends State<AskApp> {
         'answers': ['Batman', 'Flash', 'Iron Man', 'Spiderman'],
       },
     ];
+    List<String> answers = asks[_selectedAsk]['answers'];
+    List<Widget> widgets = answers.map((t) => Answer(t, _answer)).toList();
 
-    List<Widget> answersArr = [];
-    for (var textAnswer in asks[_selectedAsk]['answers']) {
-      answersArr.add(Answer(textAnswer, _answer));
-    }
+    // for (var textAnswer in asks[_selectedAsk]['answers']) {
+    //   answersArr.add(Answer(textAnswer, _answer));
+    // }
 
     return new MaterialApp(
       home: Scaffold(
@@ -43,7 +44,7 @@ class _AskAppState extends State<AskApp> {
         ),
         body: Column(children: [
           Question(asks.elementAt(_selectedAsk)['text']),
-          ...answersArr,
+          ...widgets,
         ]),
       ),
     );
